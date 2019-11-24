@@ -18,28 +18,31 @@
     </style>
 
     <div class="example-wrapper">
-        <div style="width:49%;display:inline-block">
+        <div style="width:49%;display:inline-block; position:relative; bottom:125px;">
             <h1>Create a ingredient</h1>
-
-
             <form action="{{ path('create_ingredients_sauce') }}" method="post">
                 <p>Enter the sauce</p>
                 <input type="text" name="sauce">
                 <button type="submit"> Create a sauce</button>
             </form>
-
-
             <form action="{{ path('create_ingredients_toppings') }}" method="post">
                 <p>Enter the topping</p>
                 <input type="text" name="topping">
                 <button type="submit"> Create a topping</button>
             </form>
-
-
         </div>
         <div style="width:50%; display:inline-block">
             <p>List with diffrent kind of sauce:</p>
+
+            {% for sauce in sauces %}
+                <li>{{ sauce.name }}</li>
+            {% endfor %}
+
             <p>List with diffrent kind of toppings:</p>
+            {% for topping in toppings %}
+            <li>{{ topping.name }}</li>
+            {% endfor %}
+
         </div>
         <a href="{{ path('pizza') }}">Return to pizza's!</a>
 

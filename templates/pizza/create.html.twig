@@ -11,24 +11,33 @@
     <div class="example-wrapper">
         <h1>Create a pizza</h1>
 
-        <form action="" method="post">
+        <form action="{{ path('create_pizza') }}" method="post" id="pizza">
+            <p>Name your pizza</p>
+            <input type="text" name="name">
             <p>Select your sauce</p>
-            <select>
-                <option value="tomato">Tomato sauce</option>
-                <option value="ananas">Cheese sauce</option>
-                <option value="ananas">no sauce</option>
+            <select name="sauce" form="pizza">
+                {% for sauce in sauces %}
+                    <option {% if loop.first %} selected {% endif %}" value="{{ sauce.id }}">{{ sauce.name  }}</option>
+                {% endfor %}
             </select>
             <p>Select your toppings:</p>
-            <select>
-                <option value="chicken">chicken</option>
-                <option value="ham">ham</option>
+            <select  name="topping1" form="pizza">
+                {% for topping in toppings %}
+                    <option  {% if loop.first %} selected {% endif %} value="{{ topping.id }}">{{ topping.name  }}</option>
+                {% endfor %}
             </select>
-            <select>
-                <option value="ananas">ananas</option>
-                <option value="salami">salami</option>
+            <select name="topping2" form="pizza" >
+                {% for topping in toppings %}
+                    <option  {% if loop.first %} selected {% endif %} value="{{ topping.id }}">{{ topping.name  }}</option>
+                {% endfor %}
+            </select>
+            <select name="topping3" form="pizza">
+                {% for topping in toppings %}
+                    <option  {% if loop.first %} selected {% endif %} value="{{ topping.id }}">{{ topping.name  }}</option>
+                {% endfor %}
             </select>
             <br>
-
+            <br>
             <button type="submit"> Create a pizza </button>
         </form>
 

@@ -14,15 +14,27 @@ class IngredientsController extends AbstractController
      */
     public function index()
     {
+        $repository = $this->getDoctrine()->getRepository(Ingredients::class);
+
+        $sauces = $repository->findBy(
+            ['type' => 0]
+        );
+        $toppings = $repository->findBy(
+            ['type' => 1]
+        );
+
         return $this->render('ingredients/create.html.twig', [
             'controller_name' => 'IngredientsController',
+            'sauces' => $sauces,
+            'toppings' => $toppings
         ]);
     }
 
     /**
      * @Route("ingredients/sauce")
      */
-    public function createSauce(Request $request){
+    public function createSauce(Request $request)
+    {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -33,24 +45,29 @@ class IngredientsController extends AbstractController
         $em->persist($ingredient);
         $em->flush();
 
-        return $this->render('ingredients/create.html.twig', [
-            'controller_name' => 'IngredientsController',
-        ]);
+        return $this->redirect('/ingredients');
+
+
     }
 
     /**
-     *  @Route("ingredients/topping",  name="create topping", methods={"POST"})
+     * @Route("ingredients/topping",  name="create topping", methods={"POST"})
      */
     public function createTopping(Request $request)
     {
         $toppings = $request->request->get('topping');
+        $em = $this->getDoctrine()->getManager();
 
-        $ingredients = new Ingredients();
-        $ingredients->setName($toppings);
-        $ingredients->setType(0);
 
-        return $this->render('ingredients/create.html.twig', [
-            'controller_name' => 'IngredientsController',
-        ]);
+        $ingredient = new Ingredients();
+        $ingredient->setName($toppings);
+        $ingredient->setType(1);
+
+        $em->persist($ingredient);
+        $em->flush();
+
+
+        return $this->redirect('/ingredients');
+
     }
 }

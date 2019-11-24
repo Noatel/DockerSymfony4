@@ -13,9 +13,27 @@
 
     <a href="{{ path('create') }}">Create a pizza</a>
     <a href="{{ path('ingredients') }}">Create a ingredients</a>
+
+   <h2> Select your pizza!:</h2>
+    {% for pizza in pizzas %}
+  <p>  {{ pizza.name }}</p>
     <ul>
-        <li>Your controller at <code><a href="{{ '/application/src/Controller/PizzaController.php'|file_link(0) }}">src/Controller/PizzaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/application/templates/pizza/index.html.twig'|file_link(0) }}">templates/pizza/index.html.twig</a></code></li>
-    </ul>
+
+    {% for ingredient in pizza.pizzas %}
+            {% if(ingredient.type == 0) %}
+                <li>Sauce: {{ ingredient.name }}</li>
+
+            {% else%}
+
+            <li>Topping: {{ ingredient.name }}</li>
+
+                {% endif%}
+
+    {% endfor  %}
+
+    {% endfor  %}
+            </ul>
+
+
 </div>
 {% endblock %}

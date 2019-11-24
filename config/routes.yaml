@@ -9,3 +9,7 @@ create_ingredients_sauce:
 create_ingredients_toppings:
     path:       /ingredients/toppings
     controller: App\Controller\IngredientsController::createTopping
+
+create_pizza:
+    path:       /pizza/create
+    controller: App\Controller\PizzaController::createPizza
