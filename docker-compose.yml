@@ -5,11 +5,13 @@ version: "3.1"
 services:
 
     mysql:
-      image: mysql:8.0
+      image: mysql:5.7
       container_name: docker-symfony4-mysql
       working_dir: /application
       volumes:
         - .:/application
+        - ./.data/mysql:/var/lib/mysql:rw
+
       environment:
         - MYSQL_ROOT_PASSWORD=dbrootpw
         - MYSQL_DATABASE=docker_symfony4

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a ingredient!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 1000px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <div style="width:49%;display:inline-block">
+            <h1>Create a ingredient</h1>
+
+
+            <form action="{{ path('create_ingredients_sauce') }}" method="post">
+                <p>Enter the sauce</p>
+                <input type="text" name="sauce">
+                <button type="submit"> Create a sauce</button>
+            </form>
+
+
+            <form action="{{ path('create_ingredients_toppings') }}" method="post">
+                <p>Enter the topping</p>
+                <input type="text" name="topping">
+                <button type="submit"> Create a topping</button>
+            </form>
+
+
+        </div>
+        <div style="width:50%; display:inline-block">
+            <p>List with diffrent kind of sauce:</p>
+            <p>List with diffrent kind of toppings:</p>
+        </div>
+        <a href="{{ path('pizza') }}">Return to pizza's!</a>
+
+    </div>
+{% endblock %}

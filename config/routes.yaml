@@ -1,0 +1,11 @@
+index:
+    path:       /ingredients
+    controller: App\Controller\IngredientsController::index
+
+create_ingredients_sauce:
+    path:       /ingredients/sauce
+    controller: App\Controller\IngredientsController::createSauce
+
+create_ingredients_toppings:
+    path:       /ingredients/toppings
+    controller: App\Controller\IngredientsController::createTopping
