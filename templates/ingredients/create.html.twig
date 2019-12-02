@@ -18,7 +18,7 @@
     </style>
 
     <div class="example-wrapper">
-        <div style="width:49%;display:inline-block; position:relative; bottom:125px;">
+        <div>
             <h1>Create a ingredient</h1>
             <form action="{{ path('create_ingredients_sauce') }}" method="post">
                 <p>Enter the sauce</p>
@@ -31,7 +31,7 @@
                 <button type="submit"> Create a topping</button>
             </form>
         </div>
-        <div style="width:50%; display:inline-block">
+        <div>
             <p>List with diffrent kind of sauce:</p>
 
             {% for sauce in sauces %}
@@ -44,6 +44,7 @@
             {% endfor %}
 
         </div>
+        <br>
         <a href="{{ path('pizza') }}">Return to pizza's!</a>
 
     </div>
